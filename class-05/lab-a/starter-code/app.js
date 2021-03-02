@@ -52,11 +52,12 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sumAndMultiply(a, b, c) { //eslint-disable-line
-    let sum = a + b + c;
-    let multiply = a * b* c;
-    let statement1 = `${a} and ${b} and ${c} sum to ${sum}.`;
-    let statement2 = `The product of ${a} and ${b} and ${c} is ${multiply}.`;
-    return [sum,multiply,statement1,statement2];
+     let sumTowNumbers = sum(a,b);
+     let sumThreeNumbers = sum(sumTowNumbers[0],c);
+     let multiplyTowNumbers = multiply(a,b);
+     let multiplyThreeNumbers = multiply(multiplyTowNumbers[0],c);
+     return [sumThreeNumbers[0],multiplyThreeNumbers[0],`${a} and ${b} and ${c} sum to ${sumThreeNumbers[0]}.`,`The product of ${a} and ${b} and ${c} is ${multiplyThreeNumbers[0]}.`];
+
 
 
 }
@@ -80,11 +81,17 @@ Test this function by hand in the console to get it working, and when you think 
 let testArray = [2, 3, 4]; //eslint-disable-line
 
 function sumArray(sumArr) { //eslint-disable-line
-    let sum = sumArr.reduce((a, b) => {
-        return a + b;
-      });
-let statement = `${sumArr} was passed in as an array of numbers, and ${sum} is their sum.`;
-return[sum,statement];
+    let sumTowNumbers;
+    let sumThreeNumbers;
+    let result;
+    let statement;
+        
+    sumTowNumbers =sum(sumArr[0],sumArr[1]);
+    sumThreeNumbers=sum(sumTowNumbers[0],sumArr[2]);
+    
+    result=sumThreeNumbers[0];
+    statement=`${sumArr[0]},${sumArr[1]},${sumArr[2]} was passed in as an array of numbers, and ${result} is their sum.`;
+    return[result,statement];
 }
 
 // Here is the test for sumArray(); uncomment it to run it
@@ -105,13 +112,18 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function multiplyArray(multArr) { //eslint-disable-line
-    let multiply = multArr.reduce((a, b) => {
-        return a * b;
-      });
-    let statement = `The numbers ${multArr} have a product of ${multiply}.`
-    return[multiply,statement];
-}
+let multiplyTowNumbers;
+let multiplyThreeNumbers;
+let result;
+let statement;
 
+multiplyTowNumbers =multiply(multArr[0],multArr[1]);
+multiplyThreeNumbers=multiply(multiplyTowNumbers[0],multArr[2]);
+
+result=multiplyThreeNumbers[0];
+statement=`The numbers ${multArr[0]},${multArr[1]},${multArr[2]} have a product of ${result}.`;
+return[result,statement];
+}
 // Here is the test for multiplyArray(); uncomment it to run it
  testMultiplyArray(testArray);
 
@@ -133,7 +145,7 @@ This function should be dynamic, accepting an array of any length.
 
 Test this function by hand in the console to get it working, and when you think it is finished, uncomment the call for the testMultiplyAnyArray() function and see if the test passes.*/
 
-// Write your code herez
+// Write your code here
 let testDynamicArray = [1,2,3,4,5]; //eslint-disable-line
 
 function multiplyAnyArray(dynamicArray) { //eslint-disable-line
